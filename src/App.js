@@ -30,8 +30,10 @@ function App() {
   return (
     <div>
       {
+        //using map to iterate through each expense 
         expenses.map(expense => {
           return (
+            //setting expense properties as custom html component attribute to pass it as props to expenseitem.js
             <ExpenseItem
             title={expense.title}
             amount={expense.amount}
