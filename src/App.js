@@ -28,25 +28,22 @@ const App = () => {
       locationOfExpenditure: 'Furniture store'
     },
   ];
+  
   return (
     <Card className="expenses">
-      
       {
         //using map to iterate through each expense 
         expenses.map(expense => {
           return (
             //setting expense properties as custom html component attribute to pass it as props to expenseitem.js
-            
             <ExpenseItem
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
             locationOfExpenditure={expense.locationOfExpenditure}
             ></ExpenseItem>
-            
           );
         })}
-
     </Card>
   );
 }
