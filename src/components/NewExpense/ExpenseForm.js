@@ -39,12 +39,17 @@ const ExpenseForm = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(userInput);
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.enteredDate)
+    }
+    console.log(expenseData);
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           <div className="new-expense__control input">
             <label>Title</label>
@@ -59,7 +64,7 @@ const ExpenseForm = () => {
             <input type="date" onChange={dateChangeHandler}></input>
           </div>
           <div className="new-expense__actions">
-            <button type="submit" onClick={submitHandler}>
+            <button type="submit">
               Add Expense
             </button>
           </div>
