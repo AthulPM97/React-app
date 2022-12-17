@@ -1,6 +1,7 @@
 import Card from "./components/UI/Card";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense";
+import { useState } from "react";
 
 const App = () => {
   const expenses = [
@@ -34,14 +35,25 @@ const App = () => {
     },
   ];
 
+  const [expenseArray, setExpenseArray] = useState(expenses);
+
+  const addExpenseHandler = (expense) => {
+    console.log("inside App.js");
+
+    setExpenseArray(() => {
+      return([...expenseArray, expense])
+    });
+    console.log(expenseArray);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
 
       <Card className="expenses">
         {
           //using map to iterate through each expense
-          expenses.map((expense) => {
+          expenseArray.map((expense) => {
             return (
               //setting expense properties as custom html component attribute to pass it as props to expenseitem.js
               <ExpenseItem
@@ -51,7 +63,7 @@ const App = () => {
                 locationOfExpenditure={expense.locationOfExpenditure}
               ></ExpenseItem>
             );
-          })
+          }) 
         }
       </Card>
     </div>
