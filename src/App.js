@@ -57,14 +57,13 @@ const App = (props) => {
       <NewExpense onAddExpense={addExpenseHandler} />
       <Card className="expenses">
       <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-      </Card>
-      <Card className="expenses">
         {
           //using map to iterate through each expense
           expenseArray.map((expense) => {
             return (
               //setting expense properties as custom html component attribute to pass it as props to expenseitem.js
               <ExpenseItem
+                key={expense.id}
                 title={expense.title}
                 amount={expense.amount}
                 date={expense.date}
